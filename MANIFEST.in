@@ -1,0 +1,4 @@
+include README.md
+recursive-include octoprint_octo4a_battery/templates *
+recursive-include octoprint_octo4a_battery/translations *
+recursive-include octoprint_octo4a_battery/static *
