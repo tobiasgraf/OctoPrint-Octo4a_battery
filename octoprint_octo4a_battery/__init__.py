@@ -44,7 +44,7 @@ class Octo4a_batteryPlugin(octoprint.plugin.SettingsPlugin,
     ##~~ SettingsPlugin mixin
 
     def get_settings_defaults(self):
-        return dict(batteryLevelPath="https://en.wikipedia.org/wiki/Hello_world")
+        return dict(batteryLevelPath="/sys/class/power_supply/battery/capacity")
 
 
     def get_template_configs(self):
