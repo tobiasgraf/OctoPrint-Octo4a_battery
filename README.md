@@ -16,4 +16,4 @@ the plugin manager.
 
 ## Configuration
 
-**TODO:** Describe your plugin's configuration options (if any).
+**TODO:** This plugin simply reads the file battery from the file '/sys/class/power_supply/battery/capacity'. This works on my Phone (Nexus 5). If this does not work for you, you can change the path in the settings.
