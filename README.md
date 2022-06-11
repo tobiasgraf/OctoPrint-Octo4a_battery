@@ -1,6 +1,6 @@
 # OctoPrint-Octo4a_battery
 
-**TODO:** Describe what your plugin does.
+**TODO:** This plugin displays the battery level of yout phone running OctoPrint with [Octo4a](https://github.com/feelfreelinux/octo4a)
 
 ## Setup
 
