@@ -13,8 +13,8 @@ $(function() {
         // self.settingsViewModel = parameters[1];
 
         self.settings = parameters[0];
-        self.batteryLevel = ko.observable(100);
-        self.batteryIcon = ko.observable("fas fa-battery-half");
+        self.batteryLevel = ko.observable("100%");
+        self.batteryIcon = ko.observable("fas fa-battery-full");
 
 
         // This will get called before the HelloWorldViewModel gets bound to the DOM, but after its
@@ -30,7 +30,7 @@ $(function() {
             if (data.batteryLevel) {
                 // Add fahrenheit
                 console.log("got battery level");
-                self.batteryLevel(data.batteryLevel);
+                self.batteryLevel(data.batteryLevel.trim()+"%");
                 if ( data.batteryLevel < 10) { self.batteryIcon("fas fa-battery-empty"); }
                 // else if ( data.batteryLevel < 25) { self.batteryIcon("fas fa-battery-low"); }
                 else if ( data.batteryLevel < 50) { self.batteryIcon("fas fa-battery-quarter"); }
