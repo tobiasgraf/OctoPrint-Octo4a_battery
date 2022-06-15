@@ -20,7 +20,7 @@ class Octo4a_batteryPlugin(octoprint.plugin.SettingsPlugin,
         self._lastWarningSent = 100
 
     def on_after_startup(self):
-        self._logger.info("Hello World! (more: %s)" % self._settings.get(["batteryLevelPath"]))
+        self._logger.info(f'Hello World! (more: {self._settings.get(["batteryLevelPath"])}, "telegram enabled: {self._settings.get(["telegramEnabled"])}')
         self.start_custom_timer(5)
 
 
@@ -29,6 +29,8 @@ class Octo4a_batteryPlugin(octoprint.plugin.SettingsPlugin,
         self._checkBatteryTimer.start()
 
     def check_warning_threshold(self, newValue):
+        if self._settings.get(["telegramEnabled"]) == False:
+            return
         self._logger.debug("\n\ncheck_warning_threshold %s", newValue)
         thresholdHit = 0
         alarmThresholds = [ 5, 15, 25, 35 ]
@@ -77,7 +79,7 @@ class Octo4a_batteryPlugin(octoprint.plugin.SettingsPlugin,
     ##~~ SettingsPlugin mixin
 
     def get_settings_defaults(self):
-        return dict(batteryLevelPath="/sys/class/power_supply/battery/capacity", telegramBotToken="Token" , telegramChatID="chatID")
+        return dict(batteryLevelPath="/sys/class/power_supply/battery/capacity", telegramBotToken="Token" , telegramChatID="chatID", telegramEnabled = 0)
 
 
     def get_template_configs(self):
@@ -121,7 +123,10 @@ class Octo4a_batteryPlugin(octoprint.plugin.SettingsPlugin,
 
 
     def get_template_vars(self):
-        return dict(batteryLevelPath=self._settings.get(["batteryLevelPath"]),telegramBotToken=self._settings.get(["telegramBotToken"]),telegramChatID=self._settings.get(["telegramChatID"]))
+        return dict(batteryLevelPath=self._settings.get(["batteryLevelPath"]),
+                    telegramBotToken=self._settings.get(["telegramBotToken"]),
+                    telegramChatID=self._settings.get(["telegramChatID"]),
+                    telegramEnabled=self._settings.get(["telegramEnabled"]))
 
 # If you want your plugin to be registered within OctoPrint under a different name than what you defined in setup.py
 # ("OctoPrint-PluginSkeleton"), you may define that here. Same goes for the other metadata derived from setup.py that

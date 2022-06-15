@@ -6,12 +6,14 @@
         </div>
     </div>
     <div class="control-group">
+        <label class="control-label">{{ _('enable telegram') }}</label>
+        <div class="controls">
+            <input type="checkbox" class="input-block-level" data-bind="checked: settings.plugins.octo4a_battery.telegramEnabled">
+        </div>
         <label class="control-label">{{ _('telegram bot token') }}</label>
         <div class="controls">
             <input type="text" class="input-block-level" data-bind="value: settings.plugins.octo4a_battery.telegramBotToken">
         </div>
-    </div>
-    <div class="control-group">
         <label class="control-label">{{ _('telegram chat id') }}</label>
         <div class="controls">
             <input type="text" class="input-block-level" data-bind="value: settings.plugins.octo4a_battery.telegramChatID">
