@@ -31,6 +31,6 @@ You need to create a telegram bot and configure the token in the settings. How t
 
 To get the ChatID, write a message to the bot or add it to a channel. Then go to 
 
-https://api.telegram.org/bot\<yourTokenHere\>/getUpdates
+https://api.telegram.org/bot**yourTokenHere**/getUpdates
 
 with your browser. This returns a JSON where you can find your chat ID.
